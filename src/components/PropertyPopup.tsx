@@ -12,7 +12,7 @@ interface Props {
   onClose: () => void
 }
 
-export function PropertyPopup({ mode, spaceIndex, ownership, players, onClose }: Props) {
+export function PropertyPopup({ mode, spaceIndex, ownership, onClose }: Props) {
   const { t } = useTranslation()
   const spaces = mode === 'kids' ? KIDS_SPACES : SPACES
   const space = spaces[spaceIndex]

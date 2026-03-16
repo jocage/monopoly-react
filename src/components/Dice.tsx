@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useTranslation } from '../i18n';
 
 interface DiceProps {
@@ -54,13 +54,6 @@ export default function Dice({ onRoll, disabled, die1, die2, isDoubles }: DicePr
       onRoll();
     }, 700);
   }, [disabled, rolling, onRoll]);
-
-  useEffect(() => {
-    if (!rolling && die1 > 0) {
-      setAnimDie1(die1);
-      setAnimDie2(die2);
-    }
-  }, [die1, die2, rolling]);
 
   const displayDie1 = rolling ? animDie1 : (die1 || 1);
   const displayDie2 = rolling ? animDie2 : (die2 || 1);

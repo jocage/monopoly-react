@@ -456,7 +456,7 @@ function gameReducer(state: GameState, action: Action): GameState {
       const ownership = [...state.ownership]
       ownership[player.position] = pIdx
 
-      let newState = addLog(
+      const newState = addLog(
         { ...state, players, ownership, phase: 'rolling' },
         'log.bought',
         { name: `P${pIdx + 1}`, space: `{${space.nameKey}}`, price }
@@ -471,7 +471,7 @@ function gameReducer(state: GameState, action: Action): GameState {
     }
 
     case 'SKIP_PROPERTY': {
-      let newState = { ...state, phase: 'rolling' as const }
+      const newState = { ...state, phase: 'rolling' as const }
 
       if (state.canRollAgain && !state.players[state.currentPlayer].inJail) {
         return { ...newState, canRollAgain: true }

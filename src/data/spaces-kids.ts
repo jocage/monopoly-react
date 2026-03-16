@@ -1,4 +1,4 @@
-import type { SpaceType, Space } from './spaces'
+import type { Space } from './spaces'
 
 // Kids board: 20 spaces on a 6×6 grid perimeter
 // Fun, kid-friendly locations with emojis
