@@ -11,6 +11,7 @@ export type GameMode = 'classic' | 'kids'
 
 export interface Player {
   index: number
+  name: string
   money: number
   position: number
   properties: number[]
@@ -39,7 +40,7 @@ export interface GameState {
 }
 
 type Action =
-  | { type: 'INIT'; playerCount: number; mode: GameMode }
+  | { type: 'INIT'; playerCount: number; mode: GameMode; names: string[] }
   | { type: 'RESET' }
   | { type: 'ROLL_DICE' }
   | { type: 'BUY_PROPERTY' }
@@ -92,9 +93,10 @@ function getJailIndex(mode: GameMode) {
 
 // --- Core logic ---
 
-function createPlayers(count: number, mode: GameMode): Player[] {
+function createPlayers(count: number, mode: GameMode, names: string[]): Player[] {
   return Array.from({ length: count }, (_, i) => ({
     index: i,
+    name: names[i] || `P${i + 1}`,
     money: getStartingMoney(mode),
     position: 0,
     properties: [],
@@ -338,7 +340,7 @@ function gameReducer(state: GameState, action: Action): GameState {
       return {
         ...initialState(),
         mode: action.mode,
-        players: createPlayers(action.playerCount, action.mode),
+        players: createPlayers(action.playerCount, action.mode, action.names),
         ownership: new Array(boardSize).fill(null),
         phase: 'rolling',
       }
