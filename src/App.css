@@ -826,13 +826,11 @@ body {
   background: #fff9e6;
 }
 
-.board-kids .center-logo {
-  font-size: 50px;
-}
-
-.board-kids .center-text {
-  color: #e65100;
-  font-size: 22px;
+.kids-center-image {
+  width: min(72%, 280px);
+  height: auto;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(230, 81, 0, 0.18);
 }
 
 /* ===== Responsive ===== */
