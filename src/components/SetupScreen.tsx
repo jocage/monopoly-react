@@ -6,16 +6,23 @@ import type { GameMode } from '../game/useGame'
 
 interface Props {
   onStart: (count: number, mode: GameMode) => void
+  initialMode?: GameMode
+  onBack?: () => void
 }
 
-export function SetupScreen({ onStart }: Props) {
+export function SetupScreen({ onStart, initialMode = 'classic', onBack }: Props) {
   const [count, setCount] = useState(4)
-  const [mode, setMode] = useState<GameMode>('classic')
+  const [mode, setMode] = useState<GameMode>(initialMode)
   const { t } = useTranslation()
 
   return (
     <div className={`setup-overlay ${mode === 'kids' ? 'kids-setup' : ''}`}>
       <div className="setup-box">
+        {onBack && (
+          <button className="setup-back" onClick={onBack}>
+            {t('landing.back')}
+          </button>
+        )}
         <LanguageSwitcher />
         <h1 className="setup-title">
           {mode === 'kids' ? '🎈 ' : ''}{t('setup.title')}{mode === 'kids' ? ' 🎈' : ''}
