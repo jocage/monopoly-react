@@ -1,4 +1,19 @@
 export const ru: Record<string, string> = {
+  // Landing
+  'landing.tagline': 'Играйте в Монополию в браузере',
+  'landing.subtitle': 'Классическое поле на 40 клеток и Детский режим — для всей семьи. Без регистрации и серверов.',
+  'landing.startClassic': 'Начать игру',
+  'landing.startKids': 'Детский режим',
+  'landing.feature.multiplayer.title': 'Игра по очереди',
+  'landing.feature.multiplayer.desc': 'До 6 игроков на одном устройстве',
+  'landing.feature.classic.title': 'Классические правила',
+  'landing.feature.classic.desc': '40 клеток, $1500 старт, полное поле',
+  'landing.feature.kids.title': 'Детский режим',
+  'landing.feature.kids.desc': '20 клеток, $20 старт, понятно детям',
+  'landing.feature.local.title': '100% локально',
+  'landing.feature.local.desc': 'Без аккаунтов — открыл и играешь',
+  'landing.back': '← Назад',
+
   // Setup
   'setup.title': 'МОНОПОЛИЯ',
   'setup.subtitle': 'Выберите количество игроков',

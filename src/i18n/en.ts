@@ -1,4 +1,19 @@
 export const en: Record<string, string> = {
+  // Landing
+  'landing.tagline': 'Play Monopoly in your browser',
+  'landing.subtitle': 'A classic 40-space board and a friendly Kids mode — for the whole family. No signup, no servers.',
+  'landing.startClassic': 'Start Game',
+  'landing.startKids': 'Kids Mode',
+  'landing.feature.multiplayer.title': 'Hot-seat multiplayer',
+  'landing.feature.multiplayer.desc': 'Up to 6 players on one device',
+  'landing.feature.classic.title': 'Classic rules',
+  'landing.feature.classic.desc': '40 spaces, $1500 start, full board',
+  'landing.feature.kids.title': 'Kids mode',
+  'landing.feature.kids.desc': '20 spaces, $20 start, kid-friendly',
+  'landing.feature.local.title': '100% local',
+  'landing.feature.local.desc': 'No accounts, just open and play',
+  'landing.back': '← Back',
+
   // Setup
   'setup.title': 'MONOPOLY',
   'setup.subtitle': 'Select number of players',

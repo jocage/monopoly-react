@@ -1,4 +1,5 @@
-import { useGame } from './game/useGame'
+import { useGame, type GameMode } from './game/useGame'
+import { LandingPage } from './components/LandingPage'
 import { SetupScreen } from './components/SetupScreen'
 import { Board } from './components/Board'
 import { Sidebar } from './components/Sidebar'
@@ -10,9 +11,24 @@ import { useState } from 'react'
 export default function App() {
   const { state, initGame, resetGame, rollDice, buyProperty, skipProperty, payBail } = useGame()
   const [inspectSpace, setInspectSpace] = useState<number | null>(null)
+  const [setupMode, setSetupMode] = useState<GameMode | null>(null)
+
+  const goToLanding = () => {
+    setSetupMode(null)
+    resetGame()
+  }
 
   if (state.phase === 'setup') {
-    return <SetupScreen onStart={initGame} />
+    if (setupMode === null) {
+      return <LandingPage onStart={setSetupMode} />
+    }
+    return (
+      <SetupScreen
+        initialMode={setupMode}
+        onStart={initGame}
+        onBack={() => setSetupMode(null)}
+      />
+    )
   }
 
   return (
@@ -27,7 +43,7 @@ export default function App() {
         state={state}
         onRoll={rollDice}
         onPayBail={payBail}
-        onNewGame={resetGame}
+        onNewGame={goToLanding}
       />
       {state.phase === 'buying' && (
         <BuyPopup
@@ -50,7 +66,7 @@ export default function App() {
           winnerIndex={state.winner}
           money={state.players[state.winner].money}
           mode={state.mode}
-          onPlayAgain={resetGame}
+          onPlayAgain={goToLanding}
         />
       )}
     </div>
