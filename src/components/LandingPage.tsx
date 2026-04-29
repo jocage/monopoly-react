@@ -23,7 +23,7 @@ export function LandingPage({ onStart }: Props) {
     <div className="landing">
       <header className="landing-header">
         <div className="landing-logo">
-          <span className="landing-logo-icon">🎩</span>
+          <img className="landing-logo-icon" src="/logo.png" alt="" />
           <span className="landing-logo-text">{t('setup.title')}</span>
         </div>
         <LanguageSwitcher />

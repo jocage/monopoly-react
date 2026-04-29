@@ -853,7 +853,10 @@ body {
 }
 
 .landing-logo-icon {
-  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .landing-logo-text {
