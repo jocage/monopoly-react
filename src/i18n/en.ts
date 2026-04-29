@@ -19,11 +19,6 @@ export const en: Record<string, string> = {
   'setup.subtitle': 'Select number of players',
   'setup.start': 'Start Game',
   'setup.players': 'Players:',
-  'setup.mode': 'Game Mode',
-  'setup.classic': '🎩 Classic',
-  'setup.kids': '🧸 Kids',
-  'setup.classicDesc': 'Full 40-space board, $1500 start',
-  'setup.kidsDesc': '20-space board, $20 start, fun places!',
 
   // Controls
   'controls.rollDice': 'Roll Dice 🎲',
