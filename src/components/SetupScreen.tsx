@@ -6,13 +6,12 @@ import type { GameMode } from '../game/useGame'
 
 interface Props {
   onStart: (count: number, mode: GameMode) => void
-  initialMode?: GameMode
+  mode: GameMode
   onBack?: () => void
 }
 
-export function SetupScreen({ onStart, initialMode = 'classic', onBack }: Props) {
+export function SetupScreen({ onStart, mode, onBack }: Props) {
   const [count, setCount] = useState(4)
-  const [mode, setMode] = useState<GameMode>(initialMode)
   const { t } = useTranslation()
 
   return (
@@ -28,28 +27,6 @@ export function SetupScreen({ onStart, initialMode = 'classic', onBack }: Props)
           {mode === 'kids' ? '🎈 ' : ''}{t('setup.title')}{mode === 'kids' ? ' 🎈' : ''}
         </h1>
         <p className="setup-subtitle">{t('setup.subtitle')}</p>
-
-        <div className="mode-selector">
-          <p className="mode-label">{t('setup.mode')}</p>
-          <div className="mode-buttons">
-            <button
-              className={`mode-btn ${mode === 'classic' ? 'active' : ''}`}
-              onClick={() => setMode('classic')}
-            >
-              <span className="mode-icon">🎩</span>
-              <span className="mode-name">{t('setup.classic')}</span>
-              <span className="mode-desc">{t('setup.classicDesc')}</span>
-            </button>
-            <button
-              className={`mode-btn mode-btn-kids ${mode === 'kids' ? 'active' : ''}`}
-              onClick={() => setMode('kids')}
-            >
-              <span className="mode-icon">🧸</span>
-              <span className="mode-name">{t('setup.kids')}</span>
-              <span className="mode-desc">{t('setup.kidsDesc')}</span>
-            </button>
-          </div>
-        </div>
 
         <div className="player-count-buttons">
           {[2, 3, 4, 5, 6].map(n => (
