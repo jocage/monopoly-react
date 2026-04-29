@@ -24,7 +24,7 @@ export default function App() {
     }
     return (
       <SetupScreen
-        initialMode={setupMode}
+        mode={setupMode}
         onStart={initGame}
         onBack={() => setSetupMode(null)}
       />

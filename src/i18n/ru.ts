@@ -19,11 +19,6 @@ export const ru: Record<string, string> = {
   'setup.subtitle': 'Выберите количество игроков',
   'setup.start': 'Начать игру',
   'setup.players': 'Игроки:',
-  'setup.mode': 'Режим игры',
-  'setup.classic': '🎩 Классика',
-  'setup.kids': '🧸 Детская',
-  'setup.classicDesc': 'Полное поле 40 клеток, $1500 старт',
-  'setup.kidsDesc': '20 клеток, $20 старт, весёлые места!',
 
   // Controls
   'controls.rollDice': 'Бросить кости 🎲',
