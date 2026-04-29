@@ -110,10 +110,18 @@ export function Board({ mode, players, ownership, onSpaceClick }: Props) {
           gridColumn: `2 / ${gridSize}`,
         }}
       >
-        <div className="center-logo">{isKids ? '🎈' : '🎩'}</div>
-        <div className="center-text">
-          {isKids ? t('setup.title') + ' Kids' : t('setup.title')}
-        </div>
+        {isKids ? (
+          <img
+            className="kids-center-image"
+            src="/kids-board-center.png"
+            alt={t('setup.title') + ' Kids'}
+          />
+        ) : (
+          <>
+            <div className="center-logo">🎩</div>
+            <div className="center-text">{t('setup.title')}</div>
+          </>
+        )}
       </div>
     </div>
   )
