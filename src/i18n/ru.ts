@@ -36,6 +36,12 @@ export const ru: Record<string, string> = {
   'sidebar.inNap': '(Спит 😴)',
   'sidebar.bankrupt': '(Банкрот)',
 
+  // Theme
+  'theme.light': 'Светлая',
+  'theme.dark': 'Тёмная',
+  'theme.switchToLight': 'Переключить на светлую тему',
+  'theme.switchToDark': 'Переключить на тёмную тему',
+
   // Popups
   'popup.unowned': 'Свободная собственность',
   'popup.buyFor': 'Купить за ${price}?',

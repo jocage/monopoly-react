@@ -36,6 +36,12 @@ export const en: Record<string, string> = {
   'sidebar.inNap': '(Napping 😴)',
   'sidebar.bankrupt': '(Bankrupt)',
 
+  // Theme
+  'theme.light': 'Light',
+  'theme.dark': 'Dark',
+  'theme.switchToLight': 'Switch to light theme',
+  'theme.switchToDark': 'Switch to dark theme',
+
   // Popups
   'popup.unowned': 'Unowned Property',
   'popup.buyFor': 'Buy for ${price}?',

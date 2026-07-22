@@ -1,3 +1,69 @@
+/* ===== Theme Variables ===== */
+:root,
+[data-theme='dark'] {
+  --bg-page: #1a1a2e;
+  --text-primary: #fff;
+  --text-muted: #aaa;
+  --bg-sidebar-surface: #16213e;
+  --border-subtle: #1a2a4e;
+  --bg-lang-btn: #2a2a3e;
+  --border-lang-btn: #444;
+  --color-lang-btn: #ccc;
+  --color-lang-btn-hover-bg: #3a3a5e;
+  --bg-lang-btn-active: #1a3a5e;
+  --border-lang-btn-active: #4fc3f7;
+  --color-heading: #4fc3f7;
+  --bg-player-active: rgba(76, 175, 80, 0.2);
+  --border-player-active: rgba(76, 175, 80, 0.4);
+  --bg-new-btn: #444;
+  --color-new-btn: #ccc;
+  --bg-new-btn-hover: #555;
+  --scrollbar-thumb: #444;
+  --bg-kids-sidebar: #2a1a3e;
+  --color-kids-heading: #ffb74d;
+  --bg-kids-player-active: rgba(255, 152, 0, 0.15);
+  --border-kids-player-active: rgba(255, 152, 0, 0.3);
+  --border-kids-sidebar: rgba(255, 152, 0, 0.2);
+  --border-kids-controls: rgba(255, 152, 0, 0.3);
+  --bg-kids-controls: #2a1a3e;
+  --bg-theme-toggle: #2a2a3e;
+  --color-theme-toggle: #ccc;
+  --border-theme-toggle: #444;
+  --bg-theme-toggle-hover: #3a3a5e;
+}
+
+[data-theme='light'] {
+  --bg-page: #f0f2f5;
+  --text-primary: #1a1a2e;
+  --text-muted: #6b7280;
+  --bg-sidebar-surface: #ffffff;
+  --border-subtle: #e5e7eb;
+  --bg-lang-btn: #ffffff;
+  --border-lang-btn: #d1d5db;
+  --color-lang-btn: #4b5563;
+  --color-lang-btn-hover-bg: #f3f4f6;
+  --bg-lang-btn-active: #e0f2fe;
+  --border-lang-btn-active: #0284c7;
+  --color-heading: #0284c7;
+  --bg-player-active: rgba(76, 175, 80, 0.12);
+  --border-player-active: rgba(76, 175, 80, 0.45);
+  --bg-new-btn: #e5e7eb;
+  --color-new-btn: #4b5563;
+  --bg-new-btn-hover: #d1d5db;
+  --scrollbar-thumb: #cbd5e1;
+  --bg-kids-sidebar: #fff7ed;
+  --color-kids-heading: #c2410c;
+  --bg-kids-player-active: rgba(255, 152, 0, 0.15);
+  --border-kids-player-active: rgba(255, 152, 0, 0.4);
+  --border-kids-sidebar: rgba(255, 152, 0, 0.25);
+  --border-kids-controls: rgba(255, 152, 0, 0.3);
+  --bg-kids-controls: #fff7ed;
+  --bg-theme-toggle: #ffffff;
+  --color-theme-toggle: #4b5563;
+  --border-theme-toggle: #d1d5db;
+  --bg-theme-toggle-hover: #f3f4f6;
+}
+
 /* ===== Reset & Base ===== */
 * {
   margin: 0;
@@ -7,8 +73,8 @@
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: #1a1a2e;
-  color: #fff;
+  background: var(--bg-page);
+  color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -155,9 +221,9 @@ body {
 
 .lang-btn {
   padding: 6px 14px;
-  border: 2px solid #444;
-  background: #2a2a3e;
-  color: #ccc;
+  border: 2px solid var(--border-lang-btn);
+  background: var(--bg-lang-btn);
+  color: var(--color-lang-btn);
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
@@ -165,18 +231,47 @@ body {
 }
 
 .lang-btn:hover {
-  background: #3a3a5e;
+  background: var(--color-lang-btn-hover-bg);
 }
 
 .lang-btn.active {
-  border-color: #4fc3f7;
-  color: #fff;
-  background: #1a3a5e;
+  border-color: var(--border-lang-btn-active);
+  color: var(--text-primary);
+  background: var(--bg-lang-btn-active);
+}
+
+/* Theme Toggle */
+.theme-toggle-row {
+  display: flex;
+  justify-content: center;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 2px solid var(--border-theme-toggle);
+  background: var(--bg-theme-toggle);
+  color: var(--color-theme-toggle);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-theme-toggle-hover);
+}
+
+.theme-toggle-icon {
+  font-size: 15px;
+  line-height: 1;
 }
 
 /* Controls */
 .controls {
-  background: #16213e;
+  background: var(--bg-sidebar-surface);
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -242,26 +337,26 @@ body {
 }
 
 .btn-new {
-  background: #444;
-  color: #ccc;
+  background: var(--bg-new-btn);
+  color: var(--color-new-btn);
   font-size: 12px;
   padding: 8px;
 }
 
 .btn-new:hover {
-  background: #555;
+  background: var(--bg-new-btn-hover);
 }
 
 /* Player List */
 .player-list {
-  background: #16213e;
+  background: var(--bg-sidebar-surface);
   border-radius: 12px;
   padding: 14px;
 }
 
 .player-list h3 {
   font-size: 14px;
-  color: #4fc3f7;
+  color: var(--color-heading);
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -278,8 +373,8 @@ body {
 }
 
 .player-row.active {
-  background: rgba(76, 175, 80, 0.2);
-  border: 1px solid rgba(76, 175, 80, 0.4);
+  background: var(--bg-player-active);
+  border: 1px solid var(--border-player-active);
 }
 
 .player-row.bankrupt {
@@ -318,13 +413,13 @@ body {
 }
 
 .player-props {
-  color: #aaa;
+  color: var(--text-muted);
   font-size: 11px;
 }
 
 /* Game Log */
 .game-log {
-  background: #16213e;
+  background: var(--bg-sidebar-surface);
   border-radius: 12px;
   padding: 14px;
   flex: 1;
@@ -336,7 +431,7 @@ body {
 
 .game-log h3 {
   font-size: 14px;
-  color: #4fc3f7;
+  color: var(--color-heading);
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -349,13 +444,13 @@ body {
 
 .log-entry {
   font-size: 12px;
-  color: #bbb;
+  color: var(--text-muted);
   padding: 3px 0;
-  border-bottom: 1px solid #1a2a4e;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .log-entry:first-child {
-  color: #fff;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -705,8 +800,8 @@ body {
 }
 
 .kids-mode .controls {
-  background: #2a1a3e;
-  border: 2px solid rgba(255, 152, 0, 0.3);
+  background: var(--bg-kids-controls);
+  border: 2px solid var(--border-kids-controls);
 }
 
 .kids-mode .btn-roll {
@@ -719,18 +814,18 @@ body {
 
 .kids-mode .player-list,
 .kids-mode .game-log {
-  background: #2a1a3e;
-  border: 1px solid rgba(255, 152, 0, 0.2);
+  background: var(--bg-kids-sidebar);
+  border: 1px solid var(--border-kids-sidebar);
 }
 
 .kids-mode .player-list h3,
 .kids-mode .game-log h3 {
-  color: #ffb74d;
+  color: var(--color-kids-heading);
 }
 
 .kids-mode .player-row.active {
-  background: rgba(255, 152, 0, 0.15);
-  border: 1px solid rgba(255, 152, 0, 0.3);
+  background: var(--bg-kids-player-active);
+  border: 1px solid var(--border-kids-player-active);
 }
 
 /* Kids winner overlay */
@@ -821,7 +916,7 @@ body {
 }
 
 .log-entries::-webkit-scrollbar-thumb {
-  background: #444;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 
