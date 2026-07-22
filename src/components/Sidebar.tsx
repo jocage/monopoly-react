@@ -1,4 +1,5 @@
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { ThemeToggle } from './ThemeToggle'
 import { PlayerList } from './PlayerList'
 import { GameLog } from './GameLog'
 import { Controls } from './Controls'
@@ -15,6 +16,7 @@ export function Sidebar({ state, onRoll, onPayBail, onNewGame }: Props) {
   return (
     <div className="sidebar">
       <LanguageSwitcher />
+      <ThemeToggle />
       <Controls state={state} onRoll={onRoll} onPayBail={onPayBail} onNewGame={onNewGame} />
       <PlayerList players={state.players} currentPlayer={state.currentPlayer} mode={state.mode} />
       <GameLog log={state.log} />
