@@ -2,10 +2,12 @@ import { createContext, useContext, useState, useCallback } from 'react'
 import type { ReactNode } from 'react'
 import { en } from './en'
 import { ru } from './ru'
+import { es } from './es'
+import { it } from './it'
 
-export type Lang = 'en' | 'ru'
+export type Lang = 'en' | 'ru' | 'es' | 'it'
 
-const translations: Record<Lang, Record<string, string>> = { en, ru }
+const translations: Record<Lang, Record<string, string>> = { en, ru, es, it }
 
 interface I18nContextType {
   lang: Lang
