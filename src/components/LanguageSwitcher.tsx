@@ -2,6 +2,7 @@ import { useTranslation, type Lang } from '../i18n'
 
 const LANGUAGES: { code: Lang; label: string; flag: string }[] = [
   { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'es', label: 'Español', flag: '🇪🇸' },
   { code: 'ru', label: 'Русский', flag: '🇷🇺' },
 ]
 
