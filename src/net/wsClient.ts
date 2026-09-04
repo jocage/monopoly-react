@@ -208,17 +208,12 @@ export class WsClient {
   }
 
   private dispatch(msg: WireServerMessage): void {
-    if (msg.type === 'error' && msg.request_id && this.pending.has(msg.request_id)) {
-      const cb = this.pending.get(msg.request_id)!
-      this.pending.delete(msg.request_id)
-      cb(msg)
-      return
-    }
+    // Always fire regular listeners first — they may need to react even to
+    // messages that are also fulfilling a pending request.
     if ('request_id' in msg && msg.request_id && this.pending.has(msg.request_id)) {
       const cb = this.pending.get(msg.request_id)!
       this.pending.delete(msg.request_id)
       cb(msg)
-      return
     }
     this.listeners.forEach(fn => fn(msg))
   }

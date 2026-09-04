@@ -207,6 +207,8 @@ export function useMultiplayerGame(): MultiplayerState & MultiplayerActions {
         player_index: 0,
         request_id: `cjoin-${Date.now()}`,
       })
+      // Reflect the room code in the URL so the user can share it.
+      window.history.pushState({}, '', `/room/${created.code}`)
       setPhaseTracked('lobby')
     } catch (err) {
       setError(String(err))
@@ -232,6 +234,8 @@ export function useMultiplayerGame(): MultiplayerState & MultiplayerActions {
         player_index: wantSlot,
         request_id: `join-${Date.now()}`,
       })
+      // Reflect the room code in the URL.
+      window.history.pushState({}, '', `/room/${upper}`)
       setPhaseTracked('lobby')
     } catch (err) {
       setError(String(err))

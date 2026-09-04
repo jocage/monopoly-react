@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { PLAYER_COLORS } from '../data/constants'
@@ -16,6 +16,16 @@ export function Lobby({ mp, onLeave, initialCode }: Props) {
   const [joinCode, setJoinCode] = useState(initialCode ?? '')
   const [createMode, setCreateMode] = useState<GameMode>('classic')
   const [copied, setCopied] = useState<'code' | 'link' | null>(null)
+
+  // If we landed on /room/<CODE>, auto-join once the WebSocket is connected
+  // and the hook is still idle. Stored tokens take precedence.
+  useEffect(() => {
+    if (!initialCode) return
+    if (mp.phase !== 'idle') return
+    if (!mp.connected) return
+    void mp.joinRoom(initialCode)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialCode, mp.connected, mp.phase])
 
   const showJoinForm = mp.phase === 'idle' || (mp.phase === 'error' && !mp.room)
   const showCreated = mp.room !== null && !mp.room.started && mp.myIndex === 0
