@@ -9,15 +9,17 @@ interface Props {
   onRoll: () => void
   onPayBail: () => void
   onNewGame: () => void
+  forceDisabled?: boolean
+  disabledReason?: string
 }
 
-export function Controls({ state, onRoll, onPayBail, onNewGame }: Props) {
+export function Controls({ state, onRoll, onPayBail, onNewGame, forceDisabled, disabledReason }: Props) {
   const { t } = useTranslation()
   const isKids = state.mode === 'kids'
   const player = state.players[state.currentPlayer]
-  const canRoll = state.phase === 'rolling' && !state.players[state.currentPlayer]?.bankrupt
+  const canRoll = state.phase === 'rolling' && !state.players[state.currentPlayer]?.bankrupt && !forceDisabled
   const bailCost = isKids ? KIDS_BAIL_COST : BAIL_COST
-  const showBail = player?.inJail && player.money >= bailCost
+  const showBail = player?.inJail && player.money >= bailCost && !forceDisabled
 
   return (
     <div className="controls">
@@ -28,8 +30,11 @@ export function Controls({ state, onRoll, onPayBail, onNewGame }: Props) {
         die2={state.dice[1]}
         isDoubles={state.dice[0] === state.dice[1] && state.dice[0] > 0}
       />
-      {state.canRollAgain && (
+      {state.canRollAgain && !forceDisabled && (
         <div className="roll-again-badge">🔥 {t('controls.rollAgain')}!</div>
+      )}
+      {forceDisabled && disabledReason && (
+        <div className="controls-waiting">{disabledReason}</div>
       )}
       {showBail && (
         <button className="btn btn-bail" onClick={onPayBail}>

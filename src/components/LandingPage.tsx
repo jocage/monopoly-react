@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from '../i18n'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Board } from './Board'
@@ -6,6 +7,7 @@ import type { GameMode } from '../game/useGame'
 
 interface Props {
   onStart: (mode: GameMode) => void
+  onMultiplayer: (initialCode?: string) => void
 }
 
 const FEATURES = [
@@ -15,9 +17,10 @@ const FEATURES = [
   { icon: '⚡', titleKey: 'landing.feature.local.title', descKey: 'landing.feature.local.desc' },
 ] as const
 
-export function LandingPage({ onStart }: Props) {
+export function LandingPage({ onStart, onMultiplayer }: Props) {
   const { t } = useTranslation()
   const emptyOwnership: (number | null)[] = new Array(SPACES.length).fill(null)
+  const [joinCode, setJoinCode] = useState('')
 
   return (
     <div className="landing">
@@ -48,6 +51,27 @@ export function LandingPage({ onStart }: Props) {
             </button>
             <button className="btn landing-cta-kids" onClick={() => onStart('kids')}>
               🧸 {t('landing.startKids')}
+            </button>
+            <button className="btn landing-cta-multiplayer" onClick={() => onMultiplayer()}>
+              🌐 {t('landing.startMultiplayer')}
+            </button>
+          </div>
+
+          <div className="landing-join-row">
+            <input
+              type="text"
+              className="landing-join-input"
+              placeholder={t('lobby.join.codePlaceholder')}
+              value={joinCode}
+              onChange={e => setJoinCode(e.target.value.toUpperCase())}
+              maxLength={8}
+            />
+            <button
+              className="btn landing-join-btn"
+              disabled={joinCode.trim().length === 0}
+              onClick={() => onMultiplayer(joinCode)}
+            >
+              {t('lobby.join.button')}
             </button>
           </div>
         </div>
