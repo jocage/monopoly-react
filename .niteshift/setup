@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Installs npm dependencies from package-lock.json (the lockfile CI uses; bun.lock is unused here).
+# Skips the install when node_modules is already newer than the lockfile, so warm starts are cheap.
+set -euo pipefail
+
+cd "$NITESHIFT_CHECKOUT_ROOT/monopoly-react"
+
+if [ ! -d node_modules ] || [ package-lock.json -nt node_modules/.package-lock.json ]; then
+  npm ci --no-audit --no-fund
+else
+  echo "node_modules is current; skipping npm ci"
+fi
